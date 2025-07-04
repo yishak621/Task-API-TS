@@ -25,3 +25,8 @@ export const createTask = (req: Request, res: Response) => {
     task,
   });
 };
+
+export const updateTask = (req: Request, res: Response) => {
+  const userId = (req as any).userId;
+  const { title, completed };
+};
