@@ -3,6 +3,7 @@ export interface Task {
   userId: string;
   title: string;
   completed: boolean;
+  createdAt: Date;
 }
 
 export const tasks: Task[] = [];
