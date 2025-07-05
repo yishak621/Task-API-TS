@@ -2,11 +2,16 @@ import { Request, Response } from "express";
 import { tasks, Task } from "../models/task.model";
 import { v4 as uuidv4 } from "uuid";
 
-export const getTasks = (req: Request, res: Response) => {
+export const getTasks =async (req: Request, res: Response) => {
   const userId = (req as any).userId;
   const { completed, search, sort } = req.query;
 
-  let userTasks = tasks.filter((t) => t.userId === userId);
+  let userTasks = await prisma.task.findMany({
+    where: {
+      userId,
+      
+    }
+  })
 
   //filter by completed
   if (completed === "true") userTasks = tasks.filter((t) => t.completed);
